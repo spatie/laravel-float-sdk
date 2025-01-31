@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\FloatSdk\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FloatSdkCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-float-sdk';
 
     public $description = 'My command';
 
