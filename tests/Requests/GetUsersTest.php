@@ -7,7 +7,7 @@ use Saloon\Http\Faking\MockResponse;
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Requests\GetUsers;
 
-it('can fetch all the users of an organisation', function () {
+beforeEach(function () {
     $people = [
         ['id' => 00000001, 'name' => 'Wouter', 'email' => 'wouter@spatie.com', 'job_title' => 'Project manager', 'active' => 0],
         ['id' => 00000002, 'name' => 'Séba', 'email' => 'sebastien@spatie.com', 'job_title' => 'Frontend developer', 'active' => 1],
@@ -22,15 +22,32 @@ it('can fetch all the users of an organisation', function () {
         ['id' => 00000013, 'name' => 'Alex', 'email' => 'alex@spatie.com', 'job_title' => 'Backend developer', 'active' => 0],
     ];
 
-    $mockClient = new MockClient([
+    $this->mockClient = new MockClient([
         GetUsers::class => MockResponse::make(body: $people),
     ]);
 
-    $client = new FloatClient('fake-api-key', 'fake-user_agent');
+    $this->client = new FloatClient('fake-api-key', 'fake-user_agent');
+});
 
-    $response = $client
-        ->withMockClient($mockClient)
+it('can fetch all the users of an organisation', function () {
+   $response = $this->client
+        ->withMockClient($this->mockClient)
         ->send(new GetUsers);
+
+    expect($response->json())
+        ->toBeArray()
+        ->toHaveCount(11);
+
+    $firstUser = $response->json()[0];
+
+    expect($firstUser)
+        ->toHaveKeys(['id', 'name', 'email', 'job_title', 'active']);
+});
+
+it('can fetch the users with a specific method', function () {
+    $response = $this->client
+        ->withMockClient($this->mockClient)
+        ->users()->all();
 
     expect($response->json())
         ->toBeArray()
