@@ -5,8 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-float-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/laravel-float-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-float-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-float-sdk)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
+This package provides a seamless integration with the Float.com API for Laravel applications.
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-float-sdk.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-float-sdk)
@@ -23,11 +22,11 @@ You can install the package via composer:
 composer require spatie/laravel-float-sdk
 ```
 
-You can publish and run the migrations with:
+Add the following environment variables to your .env file:
 
-```bash
-php artisan vendor:publish --tag="laravel-float-sdk-migrations"
-php artisan migrate
+```dotenv
+FLOAT_API_TOKEN=your_api_token_here
+FLOAT_USER_AGENT=YourAppName (your-email@example.com)
 ```
 
 You can publish the config file with:
@@ -40,20 +39,43 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'api_token' => env('FLOAT_API_TOKEN'),
+    'user_agent' => env('FLOAT_USER_AGENT'),
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-float-sdk-views"
-```
 
 ## Usage
 
+### Making API Requests
+
+You can use the `FloatClient` to interact with the Float API. Here's an example of fetching all users:
+
 ```php
-$floatSdk = new Spatie\FloatSdk();
-echo $floatSdk->echoPhrase('Hello, Spatie!');
+use Spatie\FloatSdk\FloatClient;
+use Spatie\FloatSdk\Requests\GetUsers;
+
+public function execute(FloatClient $client)
+{
+    $users = $client->users()->all();
+
+    foreach ($users as $user) {
+        echo $user->name;
+    }
+}
+```
+
+
+### Using the Facade
+
+```php
+use Spatie\FloatSdk\Facades\Float;
+
+$users = Float::users()->all();
+
+foreach ($users as $user) {
+    echo $user->name;
+}
 ```
 
 ## Testing
