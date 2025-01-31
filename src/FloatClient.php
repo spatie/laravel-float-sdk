@@ -4,7 +4,6 @@ namespace Spatie\FloatSdk;
 
 use GuzzleHttp\Client;
 use Spatie\FloatSdk\Tests\Fake\FakeFloatClient;
-use Spatie\FloatSdk\Tests\Fake\FloatClientFake;
 
 class FloatClient
 {
@@ -17,7 +16,7 @@ class FloatClient
         $this->client = new Client([
             'base_uri' => 'https://api.float.com/v3',
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->apiKey,
+                'Authorization' => 'Bearer '.$this->apiKey,
                 'Accept' => 'application/json',
                 'User-Agent' => $this->userAgent,
             ],
@@ -27,6 +26,6 @@ class FloatClient
     /** @internal for testing purposes only */
     public static function fake(): void
     {
-        app()->instance(self::class, new FakeFloatClient());
+        app()->instance(self::class, new FakeFloatClient);
     }
 }
