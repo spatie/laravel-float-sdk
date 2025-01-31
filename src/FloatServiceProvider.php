@@ -16,7 +16,8 @@ class FloatServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-float-sdk');
+            ->name('laravel-float-sdk')
+            ->hasConfigFile();
     }
 
     public function registeringPackage(): void
@@ -24,10 +25,6 @@ class FloatServiceProvider extends PackageServiceProvider
         $this->app->scoped(FloatClient::class, function () {
             if (config('float-sdk.api_token') === null) {
                 throw FloatException::missingApiToken();
-            }
-
-            if (config('mailcoach-sdk.endpoint') === null) {
-                throw FloatException::missingEndpoint();
             }
 
             return new FloatClient(
