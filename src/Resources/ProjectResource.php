@@ -2,25 +2,23 @@
 
 namespace Spatie\FloatSdk\Resources;
 
-class UserResource
+class ProjectResource
 {
     public function __construct(
         public int $id,
         public string $name,
-        public string $email,
-        public string $jobTitle,
-        public bool $active
+        public string $code,
+        public string $clientId,
     ) {}
 
     /** @param array<mixed> $response */
     public static function createFromResponse(array $response): self
     {
         return new self(
-            id: $response['people_id'],
+            id: $response['project_id'],
             name: $response['name'],
-            email: $response['email'],
-            jobTitle: $response['job_title'],
-            active: $response['active'],
+            code: $response['code'],
+            clientId: $response['client_id'],
         );
     }
 }

@@ -5,22 +5,22 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Resources\UserResource;
+use Spatie\FloatSdk\Resources\ProjectResource;
 
-class GetUsers extends Request
+class GetProjects extends Request
 {
     protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return '/people';
+        return '/projects';
     }
 
-    /** @return array<UserResource> */
+    /** @return array<ProjectResource> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(function (array $object) {
-            return UserResource::createFromResponse($object);
+            return ProjectResource::createFromResponse($object);
         }, $response->json());
     }
 }
