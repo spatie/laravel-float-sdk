@@ -2,9 +2,9 @@
 
 namespace Spatie\FloatSdk;
 
+use Spatie\FloatSdk\Exceptions\FloatException;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\FloatSdk\Commands\FloatSdkCommand;
 
 class FloatServiceProvider extends PackageServiceProvider
 {
@@ -16,9 +16,24 @@ class FloatServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-float-sdk')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_float_sdk_table');
+            ->name('laravel-float-sdk');
+    }
+
+    public function registeringPackage(): void
+    {
+        $this->app->scoped(FloatClient::class, function () {
+            if (config('float-sdk.api_token') === null) {
+                throw FloatException::missingApiToken();
+            }
+
+            if (config('mailcoach-sdk.endpoint') === null) {
+                throw FloatException::missingEndpoint();
+            }
+
+            return new FloatClient(
+                config('mailcoach-sdk.api_token'),
+                config('mailcoach-sdk.endpoint'),
+            );
+        });
     }
 }
