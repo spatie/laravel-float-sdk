@@ -2,4 +2,4 @@
 
 namespace Spatie\FloatSdk;
 
-class Float {}
+class FloatSdk {}

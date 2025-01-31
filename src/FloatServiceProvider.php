@@ -19,7 +19,6 @@ class FloatServiceProvider extends PackageServiceProvider
             ->name('laravel-float-sdk')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel_float_sdk_table')
-            ->hasCommand(FloatSdkCommand::class);
+            ->hasMigration('create_laravel_float_sdk_table');
     }
 }

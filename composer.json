@@ -66,7 +66,7 @@
                 "FloatServiceProvider"
             ],
             "aliases": {
-                "FloatSdk": "Spatie\\FloatSdk\\Facades\\FloatSdk"
+                "FloatSdk": "Float"
             }
         }
     },

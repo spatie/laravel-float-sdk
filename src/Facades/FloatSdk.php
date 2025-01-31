@@ -5,12 +5,12 @@ namespace Spatie\FloatSdk\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Spatie\FloatSdk\Float
+ * @see \Spatie\FloatSdk\FloatSdk
  */
 class FloatSdk extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Spatie\FloatSdk\Float::class;
+        return \Spatie\FloatSdk\FloatSdk::class;
     }
 }
