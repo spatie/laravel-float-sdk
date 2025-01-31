@@ -27,9 +27,13 @@ class FloatServiceProvider extends PackageServiceProvider
                 throw FloatException::missingApiToken();
             }
 
+            if (config('float-sdk.user_agent') === null) {
+                throw FloatException::missingUserAgent();
+            }
+
             return new FloatClient(
                 config('mailcoach-sdk.api_token'),
-                config('mailcoach-sdk.endpoint'),
+                config('mailcoach-sdk.user_agent'),
             );
         });
     }
