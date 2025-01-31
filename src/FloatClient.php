@@ -3,6 +3,8 @@
 namespace Spatie\FloatSdk;
 
 use GuzzleHttp\Client;
+use Spatie\FloatSdk\Tests\Fake\FakeFloatClient;
+use Spatie\FloatSdk\Tests\Fake\FloatClientFake;
 
 class FloatClient
 {
@@ -20,5 +22,11 @@ class FloatClient
                 'User-Agent' => $this->userAgent,
             ],
         ]);
+    }
+
+    /** @internal for testing purposes only */
+    public static function fake(): void
+    {
+        app()->instance(self::class, new FakeFloatClient());
     }
 }

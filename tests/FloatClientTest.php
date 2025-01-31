@@ -4,6 +4,7 @@ namespace Spatie\FloatSdk\Tests;
 
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\FloatServiceProvider;
+use Spatie\FloatSdk\Tests\Fake\FakeFloatClient;
 
 beforeEach(function () {
     $this->provider = new FloatServiceProvider($this->app);
@@ -33,7 +34,7 @@ it('throws an exception if api_token is missing', function () {
     app(FloatClient::class);
 })->throws('No Float API token was provided. Make sure to set the `FLOAT_API_TOKEN` environment variable.');
 
-it('throws an exception when no endpoint is set', function () {
+it('throws an exception when no user_agent is set', function () {
     config()->set('float-sdk', [
         'api_token' => 'fake-token',
         'user_agent' => null,
@@ -43,3 +44,16 @@ it('throws an exception when no endpoint is set', function () {
 
     app(FloatClient::class);
 })->throws('Float requires a User-Agent header in the format: `YourAppName (your-email@example.com)`. Please set the `FLOAT_USER_AGENT` environment variable accordingly.');
+
+it('can create a fake', function () {
+    config()->set('float-sdk', [
+        'api_token' => 'fake-token',
+        'user_agent' => null,
+    ]);
+
+    FloatClient::fake();
+
+    $client = app(FloatClient::class);
+
+    expect($client)->toBeInstanceOf(FakeFloatClient::class);
+});
