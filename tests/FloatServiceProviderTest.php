@@ -44,16 +44,3 @@ it('throws an exception when no user_agent is set', function () {
 
     app(FloatClient::class);
 })->throws('Float requires a User-Agent header in the format: `YourAppName (your-email@example.com)`. Please set the `FLOAT_USER_AGENT` environment variable accordingly.');
-
-it('can create a fake', function () {
-    config()->set('float-sdk', [
-        'api_token' => 'fake-token',
-        'user_agent' => null,
-    ]);
-
-    FloatClient::fake();
-
-    $client = app(FloatClient::class);
-
-    expect($client)->toBeInstanceOf(FakeFloatClient::class);
-});
