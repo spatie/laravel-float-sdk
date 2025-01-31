@@ -2,30 +2,50 @@
 
 namespace Spatie\FloatSdk;
 
-use GuzzleHttp\Client;
-use Spatie\FloatSdk\Tests\Fake\FakeFloatClient;
+use Saloon\Http\Auth\TokenAuthenticator;
+use Saloon\Http\Connector;
+use Spatie\FloatSdk\Groups\ProjectsGroup;
+use Spatie\FloatSdk\Groups\TasksGroup;
+use Spatie\FloatSdk\Groups\UsersGroup;
 
-class FloatClient
+class FloatClient extends Connector
 {
-    protected Client $client;
-
     public function __construct(
-        private readonly string $apiKey,
-        private readonly string $userAgent,
-    ) {
-        $this->client = new Client([
-            'base_uri' => 'https://api.float.com/v3',
-            'headers' => [
-                'Authorization' => 'Bearer '.$this->apiKey,
-                'Accept' => 'application/json',
-                'User-Agent' => $this->userAgent,
-            ],
-        ]);
+        private string $apiKey,
+        private string $userAgent,
+    ) {}
+
+    public function resolveBaseUrl(): string
+    {
+        return 'https://api.float.com/v3';
     }
 
-    /** @internal for testing purposes only */
-    public static function fake(): void
+    protected function defaultHeaders(): array
     {
-        app()->instance(self::class, new FakeFloatClient);
+        return [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->userAgent,
+        ];
+    }
+
+    protected function defaultAuth(): TokenAuthenticator
+    {
+        return new TokenAuthenticator($this->apiKey);
+    }
+
+    public function users(): UsersGroup
+    {
+        return new UsersGroup($this);
+    }
+
+    public function projects(): ProjectsGroup
+    {
+        return new ProjectsGroup($this);
+    }
+
+    public function tasks(): TasksGroup
+    {
+        return new TasksGroup($this);
     }
 }
