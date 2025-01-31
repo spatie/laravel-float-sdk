@@ -4,7 +4,6 @@ namespace Spatie\FloatSdk\Tests;
 
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\FloatServiceProvider;
-use Spatie\FloatSdk\Tests\Fake\FakeFloatClient;
 
 beforeEach(function () {
     $this->provider = new FloatServiceProvider($this->app);

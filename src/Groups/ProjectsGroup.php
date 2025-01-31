@@ -10,6 +10,6 @@ class ProjectsGroup extends BaseResource
 {
     public function all(): Response
     {
-        return $this->connector->send(new GetProjects());
+        return $this->connector->send(new GetProjects);
     }
 }

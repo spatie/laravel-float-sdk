@@ -30,7 +30,7 @@ beforeEach(function () {
 });
 
 it('can fetch all the users of an organisation', function () {
-   $response = $this->client
+    $response = $this->client
         ->withMockClient($this->mockClient)
         ->send(new GetUsers);
 

@@ -10,6 +10,6 @@ class TasksGroup extends BaseResource
 {
     public function all(): Response
     {
-        return $this->connector->send(new GetTasks());
+        return $this->connector->send(new GetTasks);
     }
 }

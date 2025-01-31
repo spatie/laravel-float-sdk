@@ -10,6 +10,6 @@ class UsersGroup extends BaseResource
 {
     public function all(): Response
     {
-        return $this->connector->send(new GetUsers());
+        return $this->connector->send(new GetUsers);
     }
 }
