@@ -32,8 +32,8 @@ class FloatServiceProvider extends PackageServiceProvider
             }
 
             return new FloatClient(
-                config('mailcoach-sdk.api_token'),
-                config('mailcoach-sdk.user_agent'),
+                config('float-sdk.api_token'),
+                config('float-sdk.user_agent'),
             );
         });
     }
