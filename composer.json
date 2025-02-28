@@ -64,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FloatServiceProvider"
+                "Spatie\\FloatSdk\\FloatServiceProvider"
             ],
             "aliases": {
-                "FloatSdk": "Float"
+                "MailcoachSdk": "Spatie\\FloatSdk\\Facades\\FloatClient"
             }
         }
     },
