@@ -32,7 +32,7 @@ FLOAT_USER_AGENT=YourAppName (your-email@example.com)
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-float-sdk-config"
+php artisan vendor:publish --tag="float-sdk-config"
 ```
 
 This is the contents of the published config file:
