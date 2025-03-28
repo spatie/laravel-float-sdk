@@ -19,6 +19,7 @@
         "php": "^8.3",
         "illuminate/contracts": "^11.0",
         "saloonphp/laravel-plugin": "^3.0",
+        "spatie/laravel-data": "^4.14",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
@@ -49,7 +50,7 @@
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "analyse": "vendor/bin/phpstan analyse",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
