@@ -4,7 +4,7 @@ namespace Spatie\FloatSdk\QueryParameters;
 
 use Spatie\FloatSdk\Concerns\HasPaginationAndSort;
 
-class GetUsersParameters
+class GetProjectsParameters
 {
     use HasPaginationAndSort;
 
@@ -14,10 +14,9 @@ class GetUsersParameters
      */
     public function __construct(
         public ?bool $active = null,
-        public ?int $departmentId = null,
-        public ?string $email = null,
-        public ?int $peopleTypeId = null,
-        public ?int $employeeTypeId = null,
+        public ?string $projectCode = null,
+        public ?int $clientId = null,
+        public ?bool $nonBillable = null,
         public ?string $tagName = null,
         public ?string $modifiedSince = null,
         public ?array $fields = null,
@@ -37,18 +36,17 @@ class GetUsersParameters
     public function toArray(): array
     {
         return array_filter([
+            'project_code' => $this->projectCode,
+            'client_id' => $this->clientId,
             'active' => $this->active ? 1 : 0,
-            'department_id' => $this->departmentId,
-            'email' => $this->email,
-            'people_type_id' => $this->peopleTypeId,
-            'employee_type_id' => $this->employeeTypeId,
+            'nonBillable' => $this->nonBillable ? 1 : 0,
             'tag_name' => $this->tagName,
-            'modified_since' => $this->modifiedSince,
-            'fields' => $this->fields ? implode(',', $this->fields) : null,
-            'expand' => $this->expand ? implode(',', $this->expand) : null,
             'page' => $this->page,
             'per-page' => $this->perPage,
             'sort' => $this->sort,
+            'modified_since' => $this->modifiedSince,
+            'fields' => $this->fields ? implode(',', $this->fields) : null,
+            'expand' => $this->expand ? implode(',', $this->expand) : null,
         ], fn ($value) => $value !== null);
     }
 }
