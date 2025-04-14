@@ -5,8 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-float-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/laravel-float-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-float-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-float-sdk)
 
-This package provides a seamless integration with the Float.com API for Laravel applications.
-## Support us
+A Laravel-friendly SDK to interact with the [Float API (v3)](https://developer.float.com/).
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-float-sdk.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-float-sdk)
 
@@ -47,35 +46,147 @@ return [
 
 ## Usage
 
-### Making API Requests
+### Instantiating the Client
 
-You can use the `FloatClient` to interact with the Float API. Here's an example of fetching all users:
+You can use the `FloatClient` class to interact with the Float API.
+Why is it called `FloatClient` and not just `Float`, you ask? Well, float is a reserved keyword in PHP.
+
+The `FloatClient` is bound to the Laravel service container and can be injected:
 
 ```php
 use Spatie\FloatSdk\FloatClient;
-use Spatie\FloatSdk\Requests\GetUsers;
 
-public function execute(FloatClient $client)
+public function __construct(protected FloatClient $client) {}
+
+public function index()
 {
-    $users = $client->users()->all();
-
-    foreach ($users as $user) {
-        echo $user->name;
-    }
+    $users = $this->client->users()->all();
 }
+
 ```
 
+### Available endpoints
 
-### Using the Facade
+The `FloatClient` exposes the following resource groups:
+- users()
+- projects()
+- tasks()
+
+Each group has methods to fetch individual records or lists with optional filters.
+
+### Users
+
+#### Get user by ID
 
 ```php
-use Spatie\FloatSdk\Facades\Float;
+$user = $client->users()->get(1);
+```
 
-$users = Float::users()->all();
+#### Get all users
 
-foreach ($users as $user) {
-    echo $user->name;
-}
+```php
+// Without filters
+$users = $client->users()->all();
+
+// With filters
+use Spatie\FloatSdk\QueryParameters\GetUsersParameters;
+
+$users = $client->users()->all(
+    new GetUsersParameters(
+        active: true,
+        departmentId: 5,
+    )
+);
+```
+
+### Projects
+
+####  Get project by ID
+
+```php
+$project = $client->projects()->get(10);
+```
+
+####  Get all projects
+
+```php
+// Without filters
+$projects = $client->projects()->all();
+
+// With filters
+use Spatie\FloatSdk\QueryParameters\GetProjectsParameters;
+
+$projects = $client->projects()->all(
+    new GetProjectsParameters(
+        clientId: 10,
+        tagName: 'Design',
+        fields: ['id', 'name'],
+        expand: ['client'],
+    )
+);
+
+```
+
+### Tasks
+
+#### Get task by ID
+
+```php
+$task = $client->tasks()->get(1);
+```
+
+#### Get all tasks
+
+```php
+// Without filters
+$tasks = $client->tasks()->all();
+
+// With filters
+use Spatie\FloatSdk\QueryParameters\GetTasksParameters;
+
+$tasks = $client->tasks()->all(
+    new GetTasksParameters(
+        projectId: 42,
+        billable: true,
+        fields: ['id', 'name'],
+    )
+);
+```
+
+### Pagination & Sorting
+
+You can pass a parameter object to the `all()` methods. All parameters are optional.
+
+- `page` (int): Page number (default: 1)
+- `perPage` (int): Number of items per page (default: 50)
+- `sort` (string): Sort field (e.g., "name", "modified_since")
+
+```php
+new GetUsersParameters(
+    page: 2,
+    perPage: 25,
+    sort: 'name'
+);
+```
+
+### Selecting fields
+
+Limit which fields are returned by passing the `fields` array:
+
+```php
+new GetProjectsParameters(
+    fields: ['id', 'name', 'client_id']
+);
+```
+
+### Expanding relationships
+
+Some endpoints support expanding related data using the `expand` array:
+```php
+new GetProjectsParameters(
+    expand: ['client']
+);
+
 ```
 
 ## Testing
