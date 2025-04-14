@@ -62,7 +62,6 @@ public function index()
 {
     $users = $this->client->users()->all();
 }
-
 ```
 
 ### Available endpoints
@@ -71,6 +70,7 @@ The `FloatClient` exposes the following resource groups:
 - users()
 - projects()
 - tasks()
+- clients()
 
 Each group has methods to fetch individual records or lists with optional filters.
 
