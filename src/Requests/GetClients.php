@@ -34,4 +34,3 @@ class GetClients extends Request
         }, $response->json());
     }
 }
-

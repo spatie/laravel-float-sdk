@@ -9,8 +9,8 @@ class GetClientsParameters
     use HasPaginationAndSort;
 
     /**
-     * @param ?array<int, string> $fields
-     * @param ?array<int, string> $expand
+     * @param  ?array<int, string>  $fields
+     * @param  ?array<int, string>  $expand
      */
     public function __construct(
         public ?array $fields = null,
