@@ -10,7 +10,7 @@ class TaskResource
         public string $projectId,
     ) {}
 
-    /** @param array<mixed> $response */
+    /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): self
     {
         return new self(
