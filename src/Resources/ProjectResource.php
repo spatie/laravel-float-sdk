@@ -8,7 +8,7 @@ class ProjectResource
         public int $id,
         public string $name,
         public string $code,
-        public string $clientId,
+        public int $clientId,
     ) {}
 
     /** @param array<string, mixed> $response */

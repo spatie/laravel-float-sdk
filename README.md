@@ -124,7 +124,6 @@ $projects = $client->projects()->all(
         expand: ['client'],
     )
 );
-
 ```
 
 ### Tasks

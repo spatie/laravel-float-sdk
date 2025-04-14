@@ -7,7 +7,7 @@ class TaskResource
     public function __construct(
         public int $id,
         public string $name,
-        public string $projectId,
+        public int $projectId,
     ) {}
 
     /** @param array<string, mixed> $response */
