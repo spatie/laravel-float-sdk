@@ -38,8 +38,8 @@ class GetProjectsParameters
         return array_filter([
             'project_code' => $this->projectCode,
             'client_id' => $this->clientId,
-            'active' => $this->active ? 1 : 0,
-            'nonBillable' => $this->nonBillable ? 1 : 0,
+            'active' => is_null($this->active) ? null : (int) $this->active,
+            'nonBillable' => is_null($this->nonBillable) ? null : (int) $this->active,
             'tag_name' => $this->tagName,
             'page' => $this->page,
             'per-page' => $this->perPage,
