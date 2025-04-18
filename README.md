@@ -69,7 +69,7 @@ public function index()
 The `FloatClient` exposes the following resource groups:
 - users()
 - projects()
-- tasks()
+- projectTasks()
 - clients()
 - allocations()
 
@@ -127,24 +127,24 @@ $projects = $float->projects()->all(
 );
 ```
 
-### Tasks
+### Project tasks
 
-#### Get task by ID
+#### Get project task by ID
 
 ```php
-$task = $float->tasks()->get(1);
+$task = $float->projectTasks()->get(1);
 ```
 
-#### Get all tasks
+#### Get all project tasks
 
 ```php
 // Without filters
-$tasks = $float->tasks()->all();
+$tasks = $float->projectTasks()->all();
 
 // With filters
 use Spatie\FloatSdk\QueryParameters\GetProjectTasksParams;
 
-$tasks = $float->tasks()->all(
+$tasks = $float->projectTasks()->all(
     new GetProjectTasksParams(
         projectId: 42,
         billable: true,
