@@ -5,9 +5,9 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Resources\TaskResource;
+use Spatie\FloatSdk\Resources\ProjectTaskResource;
 
-class GetTask extends Request
+class GetProjectTask extends Request
 {
     protected Method $method = Method::GET;
 
@@ -18,8 +18,8 @@ class GetTask extends Request
         return "/project-tasks/{$this->id}";
     }
 
-    public function createDtoFromResponse(Response $response): TaskResource
+    public function createDtoFromResponse(Response $response): ProjectTaskResource
     {
-        return TaskResource::createFromResponse($response->json());
+        return ProjectTaskResource::createFromResponse($response->json());
     }
 }

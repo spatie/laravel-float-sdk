@@ -142,10 +142,10 @@ $task = $float->tasks()->get(1);
 $tasks = $float->tasks()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetTasksParams;
+use Spatie\FloatSdk\QueryParameters\GetProjectTasksParams;
 
 $tasks = $float->tasks()->all(
-    new GetTasksParams(
+    new GetProjectTasksParams(
         projectId: 42,
         billable: true,
         fields: ['id', 'name'],
