@@ -5,7 +5,7 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\QueryParameters\GetTasksParameters;
+use Spatie\FloatSdk\QueryParameters\GetTasksParams;
 use Spatie\FloatSdk\Resources\TaskResource;
 
 class GetTasks extends Request
@@ -13,7 +13,7 @@ class GetTasks extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected ?GetTasksParameters $parameters = null
+        protected ?GetTasksParams $parameters = null
     ) {}
 
     protected function defaultQuery(): array

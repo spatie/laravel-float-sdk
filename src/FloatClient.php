@@ -4,6 +4,7 @@ namespace Spatie\FloatSdk;
 
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
+use Spatie\FloatSdk\Groups\AllocationsGroup;
 use Spatie\FloatSdk\Groups\ClientsGroup;
 use Spatie\FloatSdk\Groups\ProjectsGroup;
 use Spatie\FloatSdk\Groups\TasksGroup;
@@ -53,5 +54,10 @@ class FloatClient extends Connector
     public function clients(): ClientsGroup
     {
         return new ClientsGroup($this);
+    }
+
+    public function allocations(): AllocationsGroup
+    {
+        return new AllocationsGroup($this);
     }
 }

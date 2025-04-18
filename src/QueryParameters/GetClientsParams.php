@@ -4,17 +4,17 @@ namespace Spatie\FloatSdk\QueryParameters;
 
 use Spatie\FloatSdk\Concerns\HasPaginationAndSort;
 
-class GetTasksParameters
+class GetClientsParams
 {
     use HasPaginationAndSort;
 
     /**
-     * @param  array<string>|null  $fields
+     * @param  ?array<int, string>  $fields
+     * @param  ?array<int, string>  $expand
      */
     public function __construct(
-        public ?int $projectId = null,
-        public ?bool $billable = null,
         public ?array $fields = null,
+        public ?array $expand = null,
         ?int $page = null,
         ?int $perPage = null,
         ?string $sort = null,
@@ -30,12 +30,11 @@ class GetTasksParameters
     public function toArray(): array
     {
         return array_filter([
-            'project_id' => $this->projectId,
-            'billable' => $this->billable ? 1 : 0,
             'page' => $this->page,
             'per-page' => $this->perPage,
             'sort' => $this->sort,
             'fields' => $this->fields ? implode(',', $this->fields) : null,
+            'expand' => $this->expand ? implode(',', $this->expand) : null,
         ], fn ($value) => $value !== null);
     }
 }

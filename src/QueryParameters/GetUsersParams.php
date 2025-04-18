@@ -4,7 +4,7 @@ namespace Spatie\FloatSdk\QueryParameters;
 
 use Spatie\FloatSdk\Concerns\HasPaginationAndSort;
 
-class GetUsersParameters
+class GetUsersParams
 {
     use HasPaginationAndSort;
 

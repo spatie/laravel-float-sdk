@@ -56,11 +56,11 @@ The `FloatClient` is bound to the Laravel service container and can be injected:
 ```php
 use Spatie\FloatSdk\FloatClient;
 
-public function __construct(protected FloatClient $client) {}
+public function __construct(protected FloatClient $float) {}
 
 public function index()
 {
-    $users = $this->client->users()->all();
+    $users = $this->float->users()->all();
 }
 ```
 
@@ -71,6 +71,7 @@ The `FloatClient` exposes the following resource groups:
 - projects()
 - tasks()
 - clients()
+- allocations()
 
 Each group has methods to fetch individual records or lists with optional filters.
 
@@ -79,20 +80,20 @@ Each group has methods to fetch individual records or lists with optional filter
 #### Get user by ID
 
 ```php
-$user = $client->users()->get(1);
+$user = $float->users()->get(1);
 ```
 
 #### Get all users
 
 ```php
 // Without filters
-$users = $client->users()->all();
+$users = $float->users()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetUsersParameters;
+use Spatie\FloatSdk\QueryParameters\GetUsersParams;
 
-$users = $client->users()->all(
-    new GetUsersParameters(
+$users = $float->users()->all(
+    new GetUsersParams(
         active: true,
         departmentId: 5,
     )
@@ -104,20 +105,20 @@ $users = $client->users()->all(
 ####  Get project by ID
 
 ```php
-$project = $client->projects()->get(10);
+$project = $float->projects()->get(10);
 ```
 
 ####  Get all projects
 
 ```php
 // Without filters
-$projects = $client->projects()->all();
+$projects = $float->projects()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetProjectsParameters;
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 
-$projects = $client->projects()->all(
-    new GetProjectsParameters(
+$projects = $float->projects()->all(
+    new GetProjectsParams(
         clientId: 10,
         tagName: 'Design',
         fields: ['id', 'name'],
@@ -131,23 +132,73 @@ $projects = $client->projects()->all(
 #### Get task by ID
 
 ```php
-$task = $client->tasks()->get(1);
+$task = $float->tasks()->get(1);
 ```
 
 #### Get all tasks
 
 ```php
 // Without filters
-$tasks = $client->tasks()->all();
+$tasks = $float->tasks()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetTasksParameters;
+use Spatie\FloatSdk\QueryParameters\GetTasksParams;
 
-$tasks = $client->tasks()->all(
-    new GetTasksParameters(
+$tasks = $float->tasks()->all(
+    new GetTasksParams(
         projectId: 42,
         billable: true,
         fields: ['id', 'name'],
+    )
+);
+```
+
+### Clients
+
+#### Get client by ID
+
+```php
+$client = $client->clients()->get(1);
+```
+
+#### Get all clients
+
+```php
+// Without filters
+$clients = $float->clients()->all();
+
+// With filters
+use Spatie\FloatSdk\QueryParameters\GetClientsParams;
+
+$clients = $float->clients()->all(
+    new GetClientsParams(
+        fields: ['id', 'name'],
+        expand: ['projects'],
+    )
+);
+```
+
+### Allocations
+
+#### Get allocations by ID
+
+```php
+$client = $float->allocations()->get(1);
+```
+
+#### Get all allocations
+
+```php
+// Without filters
+$allocations = $float->allocations()->all();
+
+// With filters
+use Spatie\FloatSdk\QueryParameters\GetAllocationsParams;
+
+$allocations = $float->allocations()->all(
+    new GetAllocationsParams(
+        fields: ['id', 'start_date'],
+        expand: ['project'],
     )
 );
 ```
@@ -161,7 +212,9 @@ You can pass a parameter object to the `all()` methods. All parameters are optio
 - `sort` (string): Sort field (e.g., "name", "modified_since")
 
 ```php
-new GetUsersParameters(
+use Spatie\FloatSdk\QueryParameters\GetUsersParams;
+
+new GetUsersParams(
     page: 2,
     perPage: 25,
     sort: 'name'
@@ -173,7 +226,9 @@ new GetUsersParameters(
 Limit which fields are returned by passing the `fields` array:
 
 ```php
-new GetProjectsParameters(
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
+
+new GetProjectsParams(
     fields: ['id', 'name', 'client_id']
 );
 ```
@@ -182,7 +237,9 @@ new GetProjectsParameters(
 
 Some endpoints support expanding related data using the `expand` array:
 ```php
-new GetProjectsParameters(
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
+
+new GetProjectsParams(
     expand: ['client']
 );
 
