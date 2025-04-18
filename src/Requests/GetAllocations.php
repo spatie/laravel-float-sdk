@@ -6,7 +6,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Spatie\FloatSdk\QueryParameters\GetAllocationsParams;
-use Spatie\FloatSdk\Resources\TaskResource;
+use Spatie\FloatSdk\Resources\ProjectTaskResource;
 
 class GetAllocations extends Request
 {
@@ -26,11 +26,11 @@ class GetAllocations extends Request
         return '/tasks';
     }
 
-    /** @return array<int, TaskResource> */
+    /** @return array<int, ProjectTaskResource> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(
-            fn (array $object) => TaskResource::createFromResponse($object),
+            fn (array $object) => ProjectTaskResource::createFromResponse($object),
             $response->json()
         );
     }

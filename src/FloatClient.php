@@ -7,7 +7,7 @@ use Saloon\Http\Connector;
 use Spatie\FloatSdk\Groups\AllocationsGroup;
 use Spatie\FloatSdk\Groups\ClientsGroup;
 use Spatie\FloatSdk\Groups\ProjectsGroup;
-use Spatie\FloatSdk\Groups\TasksGroup;
+use Spatie\FloatSdk\Groups\ProjectTasksGroup;
 use Spatie\FloatSdk\Groups\UsersGroup;
 
 class FloatClient extends Connector
@@ -46,9 +46,9 @@ class FloatClient extends Connector
         return new ProjectsGroup($this);
     }
 
-    public function tasks(): TasksGroup
+    public function projectTasks(): ProjectTasksGroup
     {
-        return new TasksGroup($this);
+        return new ProjectTasksGroup($this);
     }
 
     public function clients(): ClientsGroup

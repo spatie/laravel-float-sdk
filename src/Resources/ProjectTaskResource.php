@@ -2,7 +2,7 @@
 
 namespace Spatie\FloatSdk\Resources;
 
-class TaskResource
+class ProjectTaskResource
 {
     public function __construct(
         public int $id,
