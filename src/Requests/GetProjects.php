@@ -26,7 +26,7 @@ class GetProjects extends Request
         return '/projects';
     }
 
-    /** @return array<ProjectResource> */
+    /** @return array<int, ProjectResource> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(function (array $object) {

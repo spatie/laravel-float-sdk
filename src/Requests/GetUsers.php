@@ -21,6 +21,11 @@ class GetUsers extends Request
         return '/people';
     }
 
+    protected function defaultQuery(): array
+    {
+        return $this->parameters ? $this->parameters->toArray() : [];
+    }
+
     /** @return array<UserResource> */
     public function createDtoFromResponse(Response $response): array
     {
