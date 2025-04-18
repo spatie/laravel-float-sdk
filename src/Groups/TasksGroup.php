@@ -4,7 +4,7 @@ namespace Spatie\FloatSdk\Groups;
 
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\QueryParameters\GetTasksParameters;
+use Spatie\FloatSdk\QueryParameters\GetTasksParams;
 use Spatie\FloatSdk\Requests\GetTask;
 use Spatie\FloatSdk\Requests\GetTasks;
 
@@ -15,7 +15,7 @@ class TasksGroup extends BaseResource
         return $this->connector->send(new GetTask($taskId));
     }
 
-    public function all(?GetTasksParameters $parameters = null): Response
+    public function all(?GetTasksParams $parameters = null): Response
     {
         return $this->connector->send(new GetTasks($parameters));
     }

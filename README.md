@@ -89,10 +89,10 @@ $user = $client->users()->get(1);
 $users = $client->users()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetUsersParameters;
+use Spatie\FloatSdk\QueryParameters\GetUsersParams;
 
 $users = $client->users()->all(
-    new GetUsersParameters(
+    new GetUsersParams(
         active: true,
         departmentId: 5,
     )
@@ -114,10 +114,10 @@ $project = $client->projects()->get(10);
 $projects = $client->projects()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetProjectsParameters;
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 
 $projects = $client->projects()->all(
-    new GetProjectsParameters(
+    new GetProjectsParams(
         clientId: 10,
         tagName: 'Design',
         fields: ['id', 'name'],
@@ -141,10 +141,10 @@ $task = $client->tasks()->get(1);
 $tasks = $client->tasks()->all();
 
 // With filters
-use Spatie\FloatSdk\QueryParameters\GetTasksParameters;
+use Spatie\FloatSdk\QueryParameters\GetTasksParams;
 
 $tasks = $client->tasks()->all(
-    new GetTasksParameters(
+    new GetTasksParams(
         projectId: 42,
         billable: true,
         fields: ['id', 'name'],

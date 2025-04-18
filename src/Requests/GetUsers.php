@@ -5,7 +5,7 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\QueryParameters\GetUsersParameters;
+use Spatie\FloatSdk\QueryParameters\GetUsersParams;
 use Spatie\FloatSdk\Resources\UserResource;
 
 class GetUsers extends Request
@@ -13,7 +13,7 @@ class GetUsers extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        protected ?GetUsersParameters $parameters = null
+        protected ?GetUsersParams $parameters = null
     ) {}
 
     public function resolveEndpoint(): string
