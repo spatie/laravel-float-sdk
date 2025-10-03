@@ -2,6 +2,7 @@
 
 namespace Spatie\FloatSdk\Groups;
 
+use Generator;
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
 use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
@@ -15,8 +16,12 @@ class ProjectsGroup extends BaseResource
         return $this->connector->send(new GetProject($projectId));
     }
 
-    public function all(?GetProjectsParams $parameters = null): Response
+    public function all(?GetProjectsParams $parameters = null): Generator
     {
-        return $this->connector->send(new GetProjects($parameters));
+        $paginator = $this->connector->paginate(new GetProjects($parameters));
+
+        foreach ($paginator->paginate() as $response) {
+            yield $response;
+        }
     }
 }
