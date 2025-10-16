@@ -5,10 +5,11 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 use Spatie\FloatSdk\Resources\ProjectResource;
 
-class GetProjects extends Request
+class GetProjects extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
