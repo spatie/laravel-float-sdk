@@ -2,14 +2,12 @@
 
 namespace Spatie\FloatSdk\Groups;
 
-use Generator;
-use Saloon\Http\Response;
 use Saloon\Http\BaseResource;
+use Saloon\Http\Response;
 use Saloon\PaginationPlugin\Paginator;
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 use Spatie\FloatSdk\Requests\GetProject;
 use Spatie\FloatSdk\Requests\GetProjects;
-use Saloon\PaginationPlugin\Contracts\Paginatable;
-use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 
 class ProjectsGroup extends BaseResource
 {
