@@ -46,12 +46,12 @@ class FloatClient extends Connector implements HasPagination
         {
             protected function isLastPage(Response $response): bool
             {
-                return is_null($response->json('next_page_url'));
+                return $response->header('X-Pagination-Page-Count') === $response->header('X-Pagination-Current-Page');
             }
 
             protected function getPageItems(Response $response, Request $request): array
             {
-                return $response->json('items');
+                return $response->json();
             }
 
             protected function applyPagination(Request $request): Request

@@ -13,6 +13,7 @@ class ProjectTaskResource
     /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): self
     {
+        ray('createFromResponse', $response);
         return new self(
             id: $response['task_meta_id'],
             name: $response['task_name'],

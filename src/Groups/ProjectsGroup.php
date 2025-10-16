@@ -3,11 +3,13 @@
 namespace Spatie\FloatSdk\Groups;
 
 use Generator;
-use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
+use Saloon\Http\BaseResource;
+use Saloon\PaginationPlugin\Paginator;
 use Spatie\FloatSdk\Requests\GetProject;
 use Spatie\FloatSdk\Requests\GetProjects;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
+use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 
 class ProjectsGroup extends BaseResource
 {
@@ -16,12 +18,8 @@ class ProjectsGroup extends BaseResource
         return $this->connector->send(new GetProject($projectId));
     }
 
-    public function all(?GetProjectsParams $parameters = null): Generator
+    public function all(?GetProjectsParams $parameters = null): Paginator
     {
-        $paginator = $this->connector->paginate(new GetProjects($parameters));
-
-        foreach ($paginator->paginate() as $response) {
-            yield $response;
-        }
+        return $this->connector->paginate(new GetProjects($parameters));
     }
 }
