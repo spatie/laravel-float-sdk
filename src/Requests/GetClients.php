@@ -5,10 +5,11 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 use Spatie\FloatSdk\QueryParameters\GetClientsParams;
 use Spatie\FloatSdk\Resources\ClientResource;
 
-class GetClients extends Request
+class GetClients extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 

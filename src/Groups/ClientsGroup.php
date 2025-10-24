@@ -2,6 +2,7 @@
 
 namespace Spatie\FloatSdk\Groups;
 
+use Saloon\PaginationPlugin\Paginator;
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
 use Spatie\FloatSdk\QueryParameters\GetClientsParams;
@@ -15,8 +16,8 @@ class ClientsGroup extends BaseResource
         return $this->connector->send(new GetClient($clientId));
     }
 
-    public function all(?GetClientsParams $parameters = null): Response
+    public function all(?GetClientsParams $parameters = null): Paginator
     {
-        return $this->connector->send(new GetClients($parameters));
+        return $this->connector->paginate(new GetClients($parameters));
     }
 }

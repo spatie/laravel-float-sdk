@@ -51,7 +51,7 @@ class FloatClient extends Connector implements HasPagination
 
             protected function getPageItems(Response $response, Request $request): array
             {
-                return $response->json();
+                return $response->dto();
             }
 
             protected function applyPagination(Request $request): Request

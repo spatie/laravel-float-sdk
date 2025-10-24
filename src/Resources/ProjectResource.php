@@ -7,8 +7,7 @@ class ProjectResource
     public function __construct(
         public int $id,
         public string $name,
-        public string $code,
-        public int $clientId,
+        public ?int $clientId,
     ) {}
 
     /** @param array<string, mixed> $response */
@@ -17,7 +16,6 @@ class ProjectResource
         return new self(
             id: $response['project_id'],
             name: $response['name'],
-            code: $response['code'],
             clientId: $response['client_id'],
         );
     }
