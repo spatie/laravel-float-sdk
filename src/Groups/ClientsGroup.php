@@ -2,9 +2,9 @@
 
 namespace Spatie\FloatSdk\Groups;
 
-use Saloon\PaginationPlugin\Paginator;
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Paginator;
 use Spatie\FloatSdk\QueryParameters\GetClientsParams;
 use Spatie\FloatSdk\Requests\GetClient;
 use Spatie\FloatSdk\Requests\GetClients;
