@@ -32,6 +32,7 @@ class GetAllocations extends Request implements Paginatable
     public function createDtoFromResponse(Response $response): array
     {
         ray($response->json());
+
         return array_map(
             fn (array $object) => AllocationData::createFromResponse($object),
             $response->json()
