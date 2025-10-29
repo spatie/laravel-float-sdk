@@ -12,6 +12,7 @@ use Spatie\FloatSdk\Resources\AllocationsResource;
 use Spatie\FloatSdk\Resources\ClientsResource;
 use Spatie\FloatSdk\Resources\ProjectsResource;
 use Spatie\FloatSdk\Resources\ProjectTasksResource;
+use Spatie\FloatSdk\Resources\PublicHolidaysResource;
 use Spatie\FloatSdk\Resources\UsersResource;
 
 class FloatClient extends Connector implements HasPagination
@@ -90,5 +91,10 @@ class FloatClient extends Connector implements HasPagination
     public function allocations(): AllocationsResource
     {
         return new AllocationsResource($this);
+    }
+
+    public function publicHolidays(): PublicHolidaysResource
+    {
+        return new PublicHolidaysResource($this);
     }
 }
