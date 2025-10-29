@@ -8,11 +8,11 @@ use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\Paginator;
-use Spatie\FloatSdk\Groups\AllocationsGroup;
-use Spatie\FloatSdk\Groups\ClientsGroup;
-use Spatie\FloatSdk\Groups\ProjectsGroup;
-use Spatie\FloatSdk\Groups\ProjectTasksGroup;
-use Spatie\FloatSdk\Groups\UsersGroup;
+use Spatie\FloatSdk\Resources\AllocationsResource;
+use Spatie\FloatSdk\Resources\ClientsResource;
+use Spatie\FloatSdk\Resources\ProjectsResource;
+use Spatie\FloatSdk\Resources\ProjectTasksResource;
+use Spatie\FloatSdk\Resources\UsersResource;
 
 class FloatClient extends Connector implements HasPagination
 {
@@ -67,28 +67,28 @@ class FloatClient extends Connector implements HasPagination
         };
     }
 
-    public function users(): UsersGroup
+    public function users(): UsersResource
     {
-        return new UsersGroup($this);
+        return new UsersResource($this);
     }
 
-    public function projects(): ProjectsGroup
+    public function projects(): ProjectsResource
     {
-        return new ProjectsGroup($this);
+        return new ProjectsResource($this);
     }
 
-    public function projectTasks(): ProjectTasksGroup
+    public function projectTasks(): ProjectTasksResource
     {
-        return new ProjectTasksGroup($this);
+        return new ProjectTasksResource($this);
     }
 
-    public function clients(): ClientsGroup
+    public function clients(): ClientsResource
     {
-        return new ClientsGroup($this);
+        return new ClientsResource($this);
     }
 
-    public function allocations(): AllocationsGroup
+    public function allocations(): AllocationsResource
     {
-        return new AllocationsGroup($this);
+        return new AllocationsResource($this);
     }
 }

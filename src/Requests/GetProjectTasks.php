@@ -5,8 +5,8 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Spatie\FloatSdk\Data\ProjectTaskData;
 use Spatie\FloatSdk\QueryParameters\GetProjectTasksParams;
-use Spatie\FloatSdk\Resources\ProjectTaskResource;
 
 class GetProjectTasks extends Request
 {
@@ -26,11 +26,11 @@ class GetProjectTasks extends Request
         return '/project-tasks';
     }
 
-    /** @return array<ProjectTaskResource> */
+    /** @return array<ProjectTaskData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(function (array $object) {
-            return ProjectTaskResource::createFromResponse($object);
+            return ProjectTaskData::createFromResponse($object);
         }, $response->json());
     }
 }

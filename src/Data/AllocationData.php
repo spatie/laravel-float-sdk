@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\FloatSdk\Resources;
+namespace Spatie\FloatSdk\Data;
 
 /**
  * Note: The API refers to these as "tasks", but they model project allocations.
  */
-class AllocationResource
+class AllocationData
 {
     public function __construct(
         public ?int $taskId,

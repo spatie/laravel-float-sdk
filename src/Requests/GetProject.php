@@ -5,7 +5,7 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Resources\ProjectResource;
+use Spatie\FloatSdk\Data\ProjectData;
 
 class GetProject extends Request
 {
@@ -18,8 +18,8 @@ class GetProject extends Request
         return "/projects/{$this->id}";
     }
 
-    public function createDtoFromResponse(Response $response): ProjectResource
+    public function createDtoFromResponse(Response $response): ProjectData
     {
-        return ProjectResource::createFromResponse($response->json());
+        return ProjectData::createFromResponse($response->json());
     }
 }

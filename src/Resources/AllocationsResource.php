@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\FloatSdk\Groups;
+namespace Spatie\FloatSdk\Resources;
 
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
@@ -8,7 +8,7 @@ use Spatie\FloatSdk\QueryParameters\GetAllocationsParams;
 use Spatie\FloatSdk\Requests\GetAllocation;
 use Spatie\FloatSdk\Requests\GetAllocations;
 
-class AllocationsGroup extends BaseResource
+class AllocationsResource extends BaseResource
 {
     public function get(int $allocationId): Response
     {

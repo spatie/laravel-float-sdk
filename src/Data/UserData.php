@@ -1,20 +1,26 @@
 <?php
 
-namespace Spatie\FloatSdk\Resources;
+namespace Spatie\FloatSdk\Data;
 
-class ClientResource
+class UserData
 {
     public function __construct(
         public int $id,
         public string $name,
+        public string $email,
+        public string $jobTitle,
+        public bool $active
     ) {}
 
     /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): self
     {
         return new self(
-            id: $response['client_id'],
+            id: $response['people_id'],
             name: $response['name'],
+            email: $response['email'],
+            jobTitle: $response['job_title'],
+            active: $response['active'],
         );
     }
 }

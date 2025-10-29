@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\FloatSdk\Groups;
+namespace Spatie\FloatSdk\Resources;
 
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
@@ -8,7 +8,7 @@ use Spatie\FloatSdk\QueryParameters\GetUsersParams;
 use Spatie\FloatSdk\Requests\GetUser;
 use Spatie\FloatSdk\Requests\GetUsers;
 
-class UsersGroup extends BaseResource
+class UsersResource extends BaseResource
 {
     public function get(int $userId): Response
     {

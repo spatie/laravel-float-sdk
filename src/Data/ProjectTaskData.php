@@ -1,22 +1,22 @@
 <?php
 
-namespace Spatie\FloatSdk\Resources;
+namespace Spatie\FloatSdk\Data;
 
-class ProjectResource
+class ProjectTaskData
 {
     public function __construct(
         public int $id,
         public string $name,
-        public ?int $clientId,
+        public int $projectId,
     ) {}
 
     /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): self
     {
         return new self(
-            id: $response['project_id'],
-            name: $response['name'],
-            clientId: $response['client_id'],
+            id: $response['task_meta_id'],
+            name: $response['task_name'],
+            projectId: $response['project_id'],
         );
     }
 }

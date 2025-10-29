@@ -5,7 +5,7 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Resources\AllocationResource;
+use Spatie\FloatSdk\Data\AllocationData;
 
 class GetAllocation extends Request
 {
@@ -18,8 +18,8 @@ class GetAllocation extends Request
         return "/tasks/{$this->id}";
     }
 
-    public function createDtoFromResponse(Response $response): AllocationResource
+    public function createDtoFromResponse(Response $response): AllocationData
     {
-        return AllocationResource::createFromResponse($response->json());
+        return AllocationData::createFromResponse($response->json());
     }
 }

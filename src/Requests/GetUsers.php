@@ -5,8 +5,8 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Spatie\FloatSdk\Data\UserData;
 use Spatie\FloatSdk\QueryParameters\GetUsersParams;
-use Spatie\FloatSdk\Resources\UserResource;
 
 class GetUsers extends Request
 {
@@ -26,11 +26,11 @@ class GetUsers extends Request
         return $this->parameters ? $this->parameters->toArray() : [];
     }
 
-    /** @return array<UserResource> */
+    /** @return array<UserData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(function (array $object) {
-            return UserResource::createFromResponse($object);
+            return UserData::createFromResponse($object);
         }, $response->json());
     }
 }

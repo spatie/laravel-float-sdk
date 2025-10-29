@@ -5,7 +5,7 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Resources\UserResource;
+use Spatie\FloatSdk\Data\UserData;
 
 class GetUser extends Request
 {
@@ -18,8 +18,8 @@ class GetUser extends Request
         return "/people/{$this->id}";
     }
 
-    public function createDtoFromResponse(Response $response): UserResource
+    public function createDtoFromResponse(Response $response): UserData
     {
-        return UserResource::createFromResponse($response->json());
+        return UserData::createFromResponse($response->json());
     }
 }

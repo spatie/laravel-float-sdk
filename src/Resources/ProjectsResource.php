@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\FloatSdk\Groups;
+namespace Spatie\FloatSdk\Resources;
 
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
@@ -9,7 +9,7 @@ use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
 use Spatie\FloatSdk\Requests\GetProject;
 use Spatie\FloatSdk\Requests\GetProjects;
 
-class ProjectsGroup extends BaseResource
+class ProjectsResource extends BaseResource
 {
     public function get(int $projectId): Response
     {

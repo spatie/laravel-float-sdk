@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\FloatSdk\Groups;
+namespace Spatie\FloatSdk\Resources;
 
 use Saloon\Http\BaseResource;
 use Saloon\Http\Response;
@@ -9,7 +9,7 @@ use Spatie\FloatSdk\QueryParameters\GetClientsParams;
 use Spatie\FloatSdk\Requests\GetClient;
 use Spatie\FloatSdk\Requests\GetClients;
 
-class ClientsGroup extends BaseResource
+class ClientsResource extends BaseResource
 {
     public function get(int $clientId): Response
     {

@@ -6,9 +6,9 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Saloon\PaginationPlugin\Contracts\Paginatable;
+use Spatie\FloatSdk\Data\AllocationData;
+use Spatie\FloatSdk\Data\ProjectTaskData;
 use Spatie\FloatSdk\QueryParameters\GetAllocationsParams;
-use Spatie\FloatSdk\Resources\AllocationResource;
-use Spatie\FloatSdk\Resources\ProjectTaskResource;
 
 class GetAllocations extends Request implements Paginatable
 {
@@ -28,12 +28,12 @@ class GetAllocations extends Request implements Paginatable
         return '/tasks';
     }
 
-    /** @return array<int, ProjectTaskResource> */
+    /** @return array<int, ProjectTaskData> */
     public function createDtoFromResponse(Response $response): array
     {
         ray($response->json());
         return array_map(
-            fn (array $object) => AllocationResource::createFromResponse($object),
+            fn (array $object) => AllocationData::createFromResponse($object),
             $response->json()
         );
     }

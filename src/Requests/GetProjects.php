@@ -6,8 +6,8 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Saloon\PaginationPlugin\Contracts\Paginatable;
+use Spatie\FloatSdk\Data\ProjectData;
 use Spatie\FloatSdk\QueryParameters\GetProjectsParams;
-use Spatie\FloatSdk\Resources\ProjectResource;
 
 class GetProjects extends Request implements Paginatable
 {
@@ -27,11 +27,11 @@ class GetProjects extends Request implements Paginatable
         return '/projects';
     }
 
-    /** @return array<int, ProjectResource> */
+    /** @return array<int, ProjectData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(function (array $object) {
-            return ProjectResource::createFromResponse($object);
+            return ProjectData::createFromResponse($object);
         }, $response->json());
     }
 }
