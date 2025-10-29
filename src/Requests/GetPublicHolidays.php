@@ -4,9 +4,7 @@ namespace Spatie\FloatSdk\Requests;
 
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Data\ClientData;
 use Spatie\FloatSdk\Data\PublicHolidayData;
-use Spatie\FloatSdk\Data\UserData;
 
 class GetPublicHolidays extends \Saloon\Http\Request
 {
@@ -16,7 +14,7 @@ class GetPublicHolidays extends \Saloon\Http\Request
 
     public function resolveEndpoint(): string
     {
-        return "/public-holidays";
+        return '/public-holidays';
     }
 
     /** @return array<PublicHolidayData> */
