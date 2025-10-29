@@ -30,6 +30,7 @@ class AllocationResource
         public ?string $created,
         public ?int $modifiedBy,
         public ?string $modified,
+        public ?array $taskDays,
     ) {}
 
     /** @param array<string, mixed> $data */
@@ -57,6 +58,7 @@ class AllocationResource
             created: $data['created'] ?? null,
             modifiedBy: $data['modified_by'] ?? null,
             modified: $data['modified'] ?? null,
+            taskDays: $data['task_days'] ?? null,
         );
     }
 }
