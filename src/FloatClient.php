@@ -13,6 +13,7 @@ use Spatie\FloatSdk\Resources\ClientsResource;
 use Spatie\FloatSdk\Resources\ProjectsResource;
 use Spatie\FloatSdk\Resources\ProjectTasksResource;
 use Spatie\FloatSdk\Resources\PublicHolidaysResource;
+use Spatie\FloatSdk\Resources\TimeOffResource;
 use Spatie\FloatSdk\Resources\UsersResource;
 
 class FloatClient extends Connector implements HasPagination
@@ -96,5 +97,10 @@ class FloatClient extends Connector implements HasPagination
     public function publicHolidays(): PublicHolidaysResource
     {
         return new PublicHolidaysResource($this);
+    }
+
+    public function timeOff(): TimeOffResource
+    {
+        return new TimeOffResource($this);
     }
 }
