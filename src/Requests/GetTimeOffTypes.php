@@ -19,6 +19,7 @@ class GetTimeOffTypes extends Request
 
     /**
      * @return array<TimeOffData>
+     *
      * @throws \JsonException
      */
     public function createDtoFromResponse(Response $response): array

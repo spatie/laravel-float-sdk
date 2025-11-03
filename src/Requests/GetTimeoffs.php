@@ -32,6 +32,7 @@ class GetTimeoffs extends Request implements Paginatable
 
     /**
      * @return array<TimeOffData>
+     *
      * @throws \JsonException
      */
     public function createDtoFromResponse(Response $response): array

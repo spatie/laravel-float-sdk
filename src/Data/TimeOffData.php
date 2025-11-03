@@ -22,7 +22,7 @@ class TimeOffData
             startDate: $response['start_date'],
             endDate: $response['end_date'],
             typeName: $response['timeoff_type_name'],
-            fullDay: (bool)$response['full_day'],
+            fullDay: (bool) $response['full_day'],
             peopleIds: $response['people_ids'],
             timeoffTypeId: $response['timeoff_type_id'],
             repeatState: $response['repeat_state'],
