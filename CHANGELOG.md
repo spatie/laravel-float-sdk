@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-float-sdk` will be documented in this file.
 
+## 1.0.0 - 2025-12-18
+
+**Full Changelog**: https://github.com/spatie/laravel-float-sdk/compare/0.0.8...1.0.0
+
 ## 0.0.8 - 2025-04-18
 
 ### What's Changed
