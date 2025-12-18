@@ -10,7 +10,6 @@ class GetAllocationsParams
 
     /**
      * @param  ?array<string>  $fields
-     * @param  ?array<string>  $expand
      */
     public function __construct(
         public ?int $clientId = null,

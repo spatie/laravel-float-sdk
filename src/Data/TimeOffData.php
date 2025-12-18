@@ -4,6 +4,9 @@ namespace Spatie\FloatSdk\Data;
 
 class TimeOffData
 {
+    /**
+     * @param  array<int>  $peopleIds
+     */
     public function __construct(
         public string $startDate,
         public string $endDate,

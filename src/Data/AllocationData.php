@@ -30,6 +30,7 @@ class AllocationData
         public ?string $created,
         public ?int $modifiedBy,
         public ?string $modified,
+        /** @var array<string, mixed>|null */
         public ?array $taskDays,
     ) {}
 
