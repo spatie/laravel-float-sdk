@@ -39,7 +39,7 @@ class GetProjectsParams
             'project_code' => $this->projectCode,
             'client_id' => $this->clientId,
             'active' => is_null($this->active) ? null : (int) $this->active,
-            'nonBillable' => is_null($this->nonBillable) ? null : (int) $this->active,
+            'nonBillable' => is_null($this->nonBillable) ? null : (int) $this->nonBillable,
             'tag_name' => $this->tagName,
             'page' => $this->page,
             'per-page' => $this->perPage,

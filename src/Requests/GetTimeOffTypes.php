@@ -5,7 +5,6 @@ namespace Spatie\FloatSdk\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\FloatSdk\Data\TimeOffData;
 use Spatie\FloatSdk\Data\TimeOffTypeData;
 
 class GetTimeOffTypes extends Request
@@ -18,7 +17,7 @@ class GetTimeOffTypes extends Request
     }
 
     /**
-     * @return array<TimeOffData>
+     * @return array<TimeOffTypeData>
      *
      * @throws \JsonException
      */
