@@ -72,6 +72,8 @@ The `FloatClient` exposes the following resource groups:
 - projectTasks()
 - clients()
 - allocations()
+- timeOff()
+- publicHolidays()
 
 Each group has methods to fetch individual records or lists with optional filters.
 
@@ -158,7 +160,7 @@ $tasks = $float->projectTasks()->all(
 #### Get client by ID
 
 ```php
-$client = $client->clients()->get(1);
+$client = $float->clients()->get(1);
 ```
 
 #### Get all clients
@@ -180,10 +182,10 @@ $clients = $float->clients()->all(
 
 ### Allocations
 
-#### Get allocations by ID
+#### Get allocation by ID
 
 ```php
-$client = $float->allocations()->get(1);
+$allocation = $float->allocations()->get(1);
 ```
 
 #### Get all allocations
@@ -197,10 +199,35 @@ use Spatie\FloatSdk\QueryParameters\GetAllocationsParams;
 
 $allocations = $float->allocations()->all(
     new GetAllocationsParams(
-        fields: ['id', 'start_date'],
-        expand: ['project'],
+        projectId: 10,
+        startDate: '2025-01-01',
+        endDate: '2025-12-31',
     )
 );
+```
+
+### Time Off
+
+#### Get all time off entries
+
+```php
+// Fetch time off entries within a date range
+$timeOffs = $float->timeOff()->all('2025-01-01', '2025-12-31');
+```
+
+#### Get time off types
+
+```php
+$timeOffTypes = $float->timeOff()->types();
+```
+
+### Public Holidays
+
+#### Get all public holidays
+
+```php
+// Fetch public holidays for a specific year
+$holidays = $float->publicHolidays()->all(2025);
 ```
 
 ### Pagination & Sorting
