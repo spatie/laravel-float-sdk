@@ -13,6 +13,12 @@
             "name": "Niels Vanpachtenbeke",
             "email": "niels@spatie.be",
             "role": "Developer"
+        },
+        {
+            "name": "Tim Van Dijck",
+            "email": "tim@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
         }
     ],
     "require": {
