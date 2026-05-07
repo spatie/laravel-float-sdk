@@ -4,6 +4,7 @@ namespace Spatie\FloatSdk\Tests\Requests;
 
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
+use Saloon\PaginationPlugin\Paginator;
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Requests\GetTimeoffs;
 use Spatie\FloatSdk\Requests\GetTimeOffTypes;
@@ -66,7 +67,7 @@ it('can fetch all timeoffs via resource', function () {
         ->withMockClient($this->mockClient)
         ->timeOff()->all('2025-01-01', '2025-12-31');
 
-    expect($paginator)->toBeInstanceOf(\Saloon\PaginationPlugin\Paginator::class);
+    expect($paginator)->toBeInstanceOf(Paginator::class);
 });
 
 it('can fetch timeoff types', function () {

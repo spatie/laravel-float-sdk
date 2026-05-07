@@ -4,8 +4,8 @@ namespace Spatie\FloatSdk\Tests\Requests;
 
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
-use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Data\AllocationData;
+use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Requests\GetAllocation;
 use Spatie\FloatSdk\Requests\GetAllocations;
 

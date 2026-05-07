@@ -3,10 +3,11 @@
 namespace Spatie\FloatSdk\Requests;
 
 use Saloon\Enums\Method;
+use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Spatie\FloatSdk\Data\PublicHolidayData;
 
-class GetPublicHolidays extends \Saloon\Http\Request
+class GetPublicHolidays extends Request
 {
     protected Method $method = Method::GET;
 
