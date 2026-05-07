@@ -4,6 +4,7 @@ namespace Spatie\FloatSdk\Tests\Requests;
 
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
+use Saloon\PaginationPlugin\Paginator;
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Requests\GetClient;
 use Spatie\FloatSdk\Requests\GetClients;
@@ -45,7 +46,7 @@ it('can fetch all clients via resource', function () {
         ->withMockClient($this->mockClient)
         ->clients()->all();
 
-    expect($paginator)->toBeInstanceOf(\Saloon\PaginationPlugin\Paginator::class);
+    expect($paginator)->toBeInstanceOf(Paginator::class);
 });
 
 it('can fetch a single client', function () {
