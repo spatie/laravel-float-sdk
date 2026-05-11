@@ -4,6 +4,7 @@ namespace Spatie\FloatSdk\Tests\Requests;
 
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
+use Spatie\FloatSdk\Data\AllocationData;
 use Spatie\FloatSdk\FloatClient;
 use Spatie\FloatSdk\Requests\GetAllocation;
 use Spatie\FloatSdk\Requests\GetAllocations;
@@ -102,4 +103,24 @@ it('can fetch a single allocation via resource', function () {
     expect($response->json())
         ->toBeArray()
         ->toHaveKeys(['task_id', 'project_id', 'people_id']);
+});
+
+it('handles a single-object response from the Float API', function () {
+    // Float API sometimes returns a bare object instead of an array when there is only one result
+    $mockClient = new MockClient([
+        GetAllocations::class => MockResponse::make(body: $this->singleAllocation),
+    ]);
+
+    $response = $this->client
+        ->withMockClient($mockClient)
+        ->send(new GetAllocations);
+
+    $dtos = $response->dto();
+
+    expect($dtos)
+        ->toBeArray()
+        ->toHaveCount(1)
+        ->each->toBeInstanceOf(AllocationData::class);
+
+    expect($dtos[0]->taskId)->toBe(1);
 });
