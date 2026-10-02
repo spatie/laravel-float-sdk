@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-float-sdk` will be documented in this file.
 
+## 2.0.0 - 2026-10-02
+
+- Upgrade to Saloon v4 (`saloonphp/laravel-plugin` ^4.0|^5.0). The connector, requests and responses are Saloon classes, so code that uses them directly should follow the [Saloon v4 upgrade guide](https://docs.saloon.dev/upgrade/upgrading-from-v3-to-v4).
+
 ## 1.0.1 - 2026-05-11
 
 ### What's Changed
