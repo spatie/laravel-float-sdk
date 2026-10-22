@@ -9,7 +9,7 @@ A Laravel-friendly SDK to interact with the [Float API (v3)](https://developer.f
 
 **Note:** this is not a full implementation for the Float API, but we welcome PR's if you need anything that is still missing.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-float-sdk.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-float-sdk)
+[<img src="https://spatie.be/github-ad-image/laravel-float-sdk.jpg" width="419px" />](https://spatie.be/github-ad-click/laravel-float-sdk)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
